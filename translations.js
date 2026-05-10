@@ -89,6 +89,167 @@ const translations = {
     booking: (name) => `Solis OS simplifica las reservas, ${name}!\n\nPagina de reservas 24/7\nCalendario inteligente\nRecordatorios automaticos\nReprogramacion facil\n\nEmpieza: https://app.solis-os.com/signup`,
     security: (name) => `La seguridad es prioridad, ${name}.\n\n- Encriptacion completa\n- Hosting seguro\n- Control de accesos\n- Cumple con GDPR`,
     app: (name) => `Solis OS funciona en todos los dispositivos, ${name}!\n\nMovil, Desktop, Tablet.\n\nApps nativas proximamente!\n\nEmpieza: https://app.solis-os.com/signup`
+  },
+
+  de: {
+    welcome: (name) => `Hallo ${name}! Willkommen bei Solis OS.\n\nIch helfe dir gerne, unsere KI-gesteuerte Plattform fuer Unternehmensmanagement kennenzulernen. Wir unterstuetzen Salons, Kliniken, Werkstaetten und andere Dienstleistungsunternehmen.\n\nWas moechtest du wissen?\n\n1. Was Solis OS kann\n2. Preise und Tarife\n3. Welche Branchen wir abdecken\n4. So startest du\n5. Demo buchen\n\nTipp einfach eine Nummer oder stell deine Frage!`,
+    welcomeWithAnswer: (name, answer) => `Hallo ${name}! Willkommen bei Solis OS.\n\n${answer}`,
+    welcomeGeneric: (name) => `Hallo ${name}! Willkommen bei Solis OS, der KI-Plattform, die Dienstleistungsunternehmen bei der Verwaltung von Terminen, Kunden und Teams hilft.\n\nWie kann ich dir helfen?`,
+    fallback: (name) => `Danke fuer deine Nachricht, ${name}. Du kannst mich fragen zu:\n- Funktionen und Features\n- Preise und Tarife\n- Unterstuetzte Branchen\n- Wie du startest\n- Demo buchen\n\nOder schreib "mit jemandem sprechen", um unser Team zu kontaktieren.`,
+    features: (name) => `Tolle Frage, ${name}! Das kann Solis OS:\n\nTermine & Buchungen - Online-Buchungsseite, die deine Kunden rund um die Uhr nutzen koennen.\n\nKundenverwaltung - Vollstaendiges CRM fuer alle deine Kunden.\n\nTeamverwaltung - Verwalte dein Team, weise Rollen zu.\n\nKI-Einblicke - Intelligente Analysen und Verbesserungsvorschlaege.\n\nAutomatische Kommunikation - WhatsApp- und E-Mail-Benachrichtigungen.\n\nDashboard - Echtzeit-Daten zu Umsatz und Buchungen.\n\nMoechtest du die Preise erfahren oder deine kostenlose Testphase starten?`,
+    pricing: (name) => `Hier sind unsere Tarife, ${name}:\n\nSTARTER - $10/Monat\nPerfekt fuer Einzelunternehmer und kleine Betriebe.\n\nPROFESSIONAL - $25/Quartal ($8,33/Monat)\nBestes Preis-Leistungs-Verhaeltnis.\n\nENTERPRISE - $45/Halbjahr ($7,50/Monat)\nMaximale Ersparnis mit Prioritaets-Support.\n\nAlle Tarife beinhalten:\n- Unbegrenzte Buchungen\n- Kunden- & Teamverwaltung\n- KI-Funktionen\n- Online-Buchungsseite\n\nKostenlose Testphase: https://app.solis-os.com/signup`,
+    industries: (name) => `Solis OS ist fuer Dienstleistungsunternehmen gebaut, ${name}:\n\nFriseure & Barbershops - Terminbuchung und Stylistenplanung\n\nBeauty & Spa - Behandlungsbuchungen und Paketmanagement\n\nArztpraxen & Zahnaerzte - Patientenplanung und Terminerinnerungen\n\nKfz-Werkstaetten - Auftragsbuchung und Mechanikerplanung\n\nFitness & Gyms - Kursplanung und Trainerverwaltung\n\nUnd viele mehr. Welche Art von Unternehmen fuehrst du?`,
+    getStarted: (name) => `Der Einstieg ist ganz einfach, ${name}!\n\n1. Erstelle dein Konto: https://app.solis-os.com/signup (30 Sekunden)\n2. Richte dein Unternehmensprofil ein\n3. Fuege deine Dienstleistungen hinzu\n4. Fuege dein Team hinzu\n5. Teile deine Buchungsseite mit Kunden\n\nIn 5 Minuten bist du startklar. Keine Kreditkarte noetig.\n\nJetzt starten: https://app.solis-os.com/signup`,
+    demo: (name) => `Gerne zeige ich dir alles, ${name}!\n\n1. Besuche unsere Website: https://solis-os.com\n2. Teste die Plattform kostenlos: https://app.solis-os.com/signup\n3. Oder schreib "mit jemandem sprechen" fuer eine persoenliche Fuehrung`,
+    trial: (name) => `Ja, ${name}! Wir bieten eine kostenlose Testphase mit vollem Zugang.\n\nKeine Kreditkarte. Keine Verpflichtung.\n\nJetzt starten: https://app.solis-os.com/signup`,
+    human: (name) => `Natuerlich, ${name}! Ein Teammitglied wird sich in Kuerze bei dir melden. Danke fuer deine Geduld!`,
+    thanks: (name) => `Gerne, ${name}! Freut mich, dass ich helfen konnte.\n\nBei weiteren Fragen schreib uns jederzeit.\n\nJetzt starten: https://app.solis-os.com/signup`,
+    bye: (name) => `Es war schoen, mit dir zu plaudern, ${name}! Meld dich jederzeit, wenn du etwas brauchst.\n\nEinen schoenen Tag noch!`,
+    yes: (name) => `Super! Das wuerde ich empfehlen, ${name}:\n\n1. Kostenlose Testphase starten: https://app.solis-os.com/signup\n2. Unternehmen und Services einrichten\n3. Buchungsseite mit Kunden teilen\n\nOder schreib "Demo" fuer eine Fuehrung.`,
+    nonText: "Danke fuer deine Nachricht! Ich kann dir am besten per Text helfen. Schreib einfach deine Frage!",
+    ai: (name) => `KI ist das Herzsueck von Solis OS, ${name}:\n\nIntelligente Planung - Optimiert deine Terminslots.\n\nKundenanalyse - Erkennt Verhaltensmuster und sagt Ausfaelle vorher.\n\nUmsatzoptimierung - Findet deine profitabelsten Services.\n\nAutomatische Nachverfolgung - Reduziert Ausfaelle um bis zu 80%.\n\nJetzt testen: https://app.solis-os.com/signup`,
+    support: (name) => `Ich bin hier, um zu helfen, ${name}!\n\nFrag mich hier alles zu Solis OS.\n\nFuer technischen Support schreib "mit jemandem sprechen".`,
+    booking: (name) => `Solis OS macht die Terminverwaltung kinderleicht, ${name}!\n\nOnline-Buchungsseite - Deine Kunden buchen rund um die Uhr.\n\nSmarter Kalender - Alle Termine auf einen Blick.\n\nAutomatische Erinnerungen - Bis zu 80% weniger Ausfaelle.\n\nEinfaches Umbuchen - Kunden buchen selbst um.\n\nKostenlos starten: https://app.solis-os.com/signup`,
+    security: (name) => `Sicherheit hat bei Solis OS hoechste Prioritaet, ${name}.\n\n- End-to-End-Verschluesselung\n- Sicheres Cloud-Hosting\n- Rollenbasierte Zugriffskontrolle\n- DSGVO-konform`,
+    app: (name) => `Solis OS funktioniert auf allen Geraeten, ${name}!\n\nMobil, Desktop, Tablet.\n\nNative Apps fuer Google Play und App Store kommen bald!\n\nJetzt starten: https://app.solis-os.com/signup`
+  },
+
+  it: {
+    welcome: (name) => `Ciao ${name}! Benvenuto su Solis OS.\n\nSono qui per aiutarti a scoprire la nostra piattaforma di gestione aziendale con intelligenza artificiale. Aiutiamo saloni, cliniche, officine e altre attivita di servizi.\n\nCosa vorresti sapere?\n\n1. Cosa fa Solis OS\n2. Prezzi e piani\n3. Settori supportati\n4. Come iniziare\n5. Prenota una demo\n\nScrivi un numero o fai la tua domanda!`,
+    welcomeWithAnswer: (name, answer) => `Ciao ${name}! Benvenuto su Solis OS.\n\n${answer}`,
+    welcomeGeneric: (name) => `Ciao ${name}! Benvenuto su Solis OS, la piattaforma con IA che aiuta le attivita di servizi a gestire prenotazioni, clienti e team.\n\nCome posso aiutarti?`,
+    fallback: (name) => `Grazie per il tuo messaggio, ${name}. Puoi chiedermi:\n- Le nostre funzionalita\n- Prezzi e piani\n- Settori supportati\n- Come iniziare\n- Prenotare una demo\n\nOppure scrivi "parlare con qualcuno" per contattare il nostro team.`,
+    features: (name) => `Ottima domanda, ${name}! Ecco cosa fa Solis OS:\n\nPrenotazioni - Pagina di prenotazione online attiva 24/7.\n\nGestione clienti - CRM completo per seguire tutti i tuoi clienti.\n\nGestione team - Gestisci il tuo team e assegna i ruoli.\n\nIA - Analisi intelligenti e suggerimenti per migliorare.\n\nComunicazioni automatiche - Notifiche WhatsApp e email.\n\nDashboard - Dati in tempo reale su fatturato e prenotazioni.\n\nVuoi conoscere i prezzi o iniziare la prova gratuita?`,
+    pricing: (name) => `Ecco i nostri piani, ${name}:\n\nSTARTER - $10/mese\nPerfetto per piccole attivita.\n\nPROFESSIONALE - $25/trimestre ($8,33/mese)\nIl miglior rapporto qualita-prezzo.\n\nENTERPRISE - $45/semestre ($7,50/mese)\nMassimo risparmio con supporto prioritario.\n\nTutti i piani includono:\n- Prenotazioni illimitate\n- Gestione clienti e team\n- Funzionalita IA\n- Pagina di prenotazione\n\nProva gratuita: https://app.solis-os.com/signup`,
+    industries: (name) => `Solis OS e fatto per le attivita di servizi, ${name}:\n\nParrucchieri e barbieri - Prenotazioni e pianificazione stilisti\n\nBellezza e spa - Gestione trattamenti e pacchetti\n\nStudi medici e dentistici - Pianificazione pazienti\n\nOfficine auto - Prenotazioni e assegnazione meccanici\n\nPalestre e fitness - Pianificazione corsi e istruttori\n\nQualsiasi attivita con appuntamenti puo usare Solis OS.\n\nChe tipo di attivita hai?`,
+    getStarted: (name) => `Iniziare e facilissimo, ${name}!\n\n1. Crea il tuo account: https://app.solis-os.com/signup (30 secondi)\n2. Configura il profilo della tua attivita\n3. Aggiungi i tuoi servizi\n4. Aggiungi il tuo team\n5. Condividi la pagina di prenotazione\n\nIn 5 minuti sei operativo. Nessuna carta di credito.\n\nInizia ora: https://app.solis-os.com/signup`,
+    demo: (name) => `Con piacere, ${name}!\n\n1. Visita il nostro sito: https://solis-os.com\n2. Prova gratis: https://app.solis-os.com/signup\n3. Oppure scrivi "parlare con qualcuno" per una demo personalizzata`,
+    trial: (name) => `Si, ${name}! Offriamo una prova gratuita con accesso completo.\n\nNessuna carta. Nessun impegno.\n\nInizia: https://app.solis-os.com/signup`,
+    human: (name) => `Certo, ${name}! Un membro del nostro team ti contattara a breve. Grazie per la pazienza!`,
+    thanks: (name) => `Prego, ${name}! Felice di aver aiutato.\n\nPer qualsiasi altra domanda, scrivici quando vuoi.\n\nInizia: https://app.solis-os.com/signup`,
+    bye: (name) => `E stato un piacere, ${name}! Se hai bisogno di qualcosa, scrivici.\n\nBuona giornata!`,
+    yes: (name) => `Perfetto! Ecco cosa ti consiglio, ${name}:\n\n1. Inizia la prova gratuita: https://app.solis-os.com/signup\n2. Configura la tua attivita e i servizi\n3. Condividi la pagina di prenotazione\n\nOppure scrivi "demo" per un tour guidato.`,
+    nonText: "Grazie per averci contattato! Posso aiutarti meglio via testo. Scrivi la tua domanda!",
+    ai: (name) => `L'IA e il cuore di Solis OS, ${name}:\n\nPianificazione intelligente - Ottimizza i tuoi slot.\n\nAnalisi clienti - Prevede le assenze.\n\nOttimizzazione ricavi - Trova i servizi piu redditizi.\n\nFollow-up automatici - Riduce le assenze fino all'80%.\n\nProvalo: https://app.solis-os.com/signup`,
+    support: (name) => `Sono qui per aiutarti, ${name}!\n\nChiedimi qualsiasi cosa su Solis OS.\n\nPer supporto tecnico, scrivi "parlare con qualcuno".`,
+    booking: (name) => `Solis OS rende la gestione prenotazioni semplicissima, ${name}!\n\nPagina di prenotazione 24/7\nCalendario intelligente\nPromemoria automatici (-80% assenze)\nRiprogrammazione facile\n\nInizia gratis: https://app.solis-os.com/signup`,
+    security: (name) => `La sicurezza e una priorita per Solis OS, ${name}.\n\n- Crittografia end-to-end\n- Hosting cloud sicuro\n- Controllo accessi basato sui ruoli\n- Conforme al GDPR`,
+    app: (name) => `Solis OS funziona su tutti i dispositivi, ${name}!\n\nMobile, Desktop, Tablet.\n\nApp native per Google Play e App Store in arrivo!\n\nInizia: https://app.solis-os.com/signup`
+  },
+
+  pt: {
+    welcome: (name) => `Ola ${name}! Bem-vindo ao Solis OS.\n\nEstou aqui para te ajudar a conhecer nossa plataforma de gestao empresarial com inteligencia artificial. Ajudamos saloes, clinicas, oficinas e outros negocios de servicos.\n\nO que gostaria de saber?\n\n1. O que o Solis OS faz\n2. Precos e planos\n3. Setores que atendemos\n4. Como comecar\n5. Agendar uma demo\n\nDigite um numero ou faca sua pergunta!`,
+    welcomeWithAnswer: (name, answer) => `Ola ${name}! Bem-vindo ao Solis OS.\n\n${answer}`,
+    welcomeGeneric: (name) => `Ola ${name}! Bem-vindo ao Solis OS, a plataforma com IA que ajuda negocios de servicos a gerenciar agendamentos, clientes e equipes.\n\nComo posso te ajudar?`,
+    fallback: (name) => `Obrigado pela mensagem, ${name}. Voce pode perguntar sobre:\n- Funcionalidades\n- Precos e planos\n- Setores atendidos\n- Como comecar\n- Agendar uma demo\n\nOu digite "falar com alguem" para contatar nossa equipe.`,
+    features: (name) => `Otima pergunta, ${name}! Veja o que o Solis OS faz:\n\nAgendamentos - Pagina de agendamento online 24/7.\n\nGestao de clientes - CRM completo para acompanhar todos os seus clientes.\n\nGestao de equipe - Gerencie seu time e atribua funcoes.\n\nIA - Analises inteligentes e recomendacoes.\n\nComunicacoes automaticas - Notificacoes via WhatsApp e e-mail.\n\nPainel de controle - Dados em tempo real sobre receita e agendamentos.\n\nQuer saber os precos ou comecar o teste gratuito?`,
+    pricing: (name) => `Aqui estao nossos planos, ${name}:\n\nINICIAL - $10/mes\nPerfeito para pequenos negocios.\n\nPROFISSIONAL - $25/trimestre ($8,33/mes)\nMelhor custo-beneficio.\n\nEMPRESA - $45/semestre ($7,50/mes)\nMaxima economia com suporte prioritario.\n\nTodos os planos incluem:\n- Agendamentos ilimitados\n- Gestao de clientes e equipe\n- Funcionalidades de IA\n- Pagina de agendamento\n\nTeste gratis: https://app.solis-os.com/signup`,
+    industries: (name) => `O Solis OS foi feito para negocios de servicos, ${name}:\n\nSaloes e barbearias - Agendamento e escala de profissionais\n\nBeleza e spa - Gestao de tratamentos e pacotes\n\nClinicas medicas e odontologicas - Agenda de pacientes\n\nOficinas mecanicas - Agendamento e designacao de mecanicos\n\nAcademias e fitness - Agenda de aulas e instrutores\n\nQualquer negocio com agendamentos pode usar o Solis OS.\n\nQual e o seu tipo de negocio?`,
+    getStarted: (name) => `Comecar e muito facil, ${name}!\n\n1. Crie sua conta: https://app.solis-os.com/signup (30 segundos)\n2. Configure o perfil do seu negocio\n3. Adicione seus servicos\n4. Adicione sua equipe\n5. Compartilhe a pagina de agendamento\n\nEm 5 minutos voce esta pronto. Sem cartao de credito.\n\nComece agora: https://app.solis-os.com/signup`,
+    demo: (name) => `Com prazer, ${name}!\n\n1. Visite nosso site: https://solis-os.com\n2. Teste gratis: https://app.solis-os.com/signup\n3. Ou digite "falar com alguem" para uma demo personalizada`,
+    trial: (name) => `Sim, ${name}! Oferecemos teste gratuito com acesso completo.\n\nSem cartao. Sem compromisso.\n\nComece: https://app.solis-os.com/signup`,
+    human: (name) => `Claro, ${name}! Um membro da nossa equipe entrara em contato em breve. Obrigado pela paciencia!`,
+    thanks: (name) => `De nada, ${name}! Fico feliz em ajudar.\n\nSe tiver mais perguntas, escreva a qualquer momento.\n\nComece: https://app.solis-os.com/signup`,
+    bye: (name) => `Foi um prazer conversar, ${name}! Se precisar de algo, escreva para nos.\n\nTenha um otimo dia!`,
+    yes: (name) => `Otimo! Sugiro o seguinte, ${name}:\n\n1. Comece o teste gratis: https://app.solis-os.com/signup\n2. Configure seu negocio e servicos\n3. Compartilhe a pagina de agendamento\n\nOu digite "demo" para um tour guiado.`,
+    nonText: "Obrigado pelo contato! Posso te ajudar melhor por texto. Digite sua pergunta!",
+    ai: (name) => `A IA e o coracao do Solis OS, ${name}:\n\nAgenda inteligente - Otimiza seus horarios.\n\nAnalise de clientes - Preve ausencias.\n\nOtimizacao de receita - Encontra seus servicos mais lucrativos.\n\nAcompanhamento automatico - Reduz ausencias em ate 80%.\n\nExperimente: https://app.solis-os.com/signup`,
+    support: (name) => `Estou aqui para ajudar, ${name}!\n\nPergunte qualquer coisa sobre o Solis OS.\n\nPara suporte tecnico, digite "falar com alguem".`,
+    booking: (name) => `O Solis OS simplifica o gerenciamento de agendamentos, ${name}!\n\nPagina de agendamento 24/7\nCalendario inteligente\nLembretes automaticos (-80% ausencias)\nReagendamento facil\n\nComece gratis: https://app.solis-os.com/signup`,
+    security: (name) => `Seguranca e prioridade no Solis OS, ${name}.\n\n- Criptografia de ponta a ponta\n- Hospedagem em nuvem segura\n- Controle de acesso por funcao\n- Em conformidade com a LGPD/GDPR`,
+    app: (name) => `O Solis OS funciona em todos os dispositivos, ${name}!\n\nCelular, Desktop, Tablet.\n\nApps nativos para Google Play e App Store em breve!\n\nComece: https://app.solis-os.com/signup`
+  },
+
+  el: {
+    welcome: (name) => `Γεια σου ${name}! Καλωσηρθες στο Solis OS.\n\nΕιμαι εδω για να σε βοηθησω να γνωρισεις την πλατφορμα μας για διαχειριση επιχειρησεων με τεχνητη νοημοσυνη. Βοηθαμε κομμωτηρια, κλινικες, συνεργεια και αλλες επιχειρησεις υπηρεσιων.\n\nΤι θα ηθελες να μαθεις;\n\n1. Τι κανει το Solis OS\n2. Τιμες και πλανα\n3. Κλαδοι που υποστηριζουμε\n4. Πως να ξεκινησεις\n5. Κλεισε ενα demo\n\nΓραψε εναν αριθμο η κανε την ερωτηση σου!`,
+    welcomeWithAnswer: (name, answer) => `Γεια σου ${name}! Καλωσηρθες στο Solis OS.\n\n${answer}`,
+    welcomeGeneric: (name) => `Γεια σου ${name}! Καλωσηρθες στο Solis OS, την πλατφορμα AI που βοηθα τις επιχειρησεις υπηρεσιων να διαχειριζονται ραντεβου, πελατες και ομαδες.\n\nΠως μπορω να σε βοηθησω;`,
+    fallback: (name) => `Ευχαριστω για το μηνυμα, ${name}. Μπορεις να ρωτησεις για:\n- Λειτουργιες και δυνατοτητες\n- Τιμες και πλανα\n- Υποστηριζομενους κλαδους\n- Πως να ξεκινησεις\n- Κλεισιμο demo\n\nΗ γραψε "μιληστε με καποιον" για να επικοινωνησεις με την ομαδα μας.`,
+    features: (name) => `Εξαιρετικη ερωτηση, ${name}! Δες τι κανει το Solis OS:\n\nΡαντεβου - Online σελιδα κρατησεων 24/7.\n\nΔιαχειριση πελατων - Πληρες CRM για ολους τους πελατες σου.\n\nΔιαχειριση ομαδας - Διαχειρισου το team σου και αναθεσε ρολους.\n\nAI - Εξυπνες αναλυσεις και προτασεις βελτιωσης.\n\nΑυτοματες ειδοποιησεις - WhatsApp και email.\n\nΠινακας ελεγχου - Δεδομενα σε πραγματικο χρονο.\n\nΘελεις να μαθεις τις τιμες η να ξεκινησεις δωρεαν δοκιμη;`,
+    pricing: (name) => `Ιδου τα πλανα μας, ${name}:\n\nSTARTER - $10/μηνα\nΙδανικο για μικρες επιχειρησεις.\n\nPROFESSIONAL - $25/τριμηνο ($8,33/μηνα)\nΚαλυτερη σχεση ποιοτητας-τιμης.\n\nENTERPRISE - $45/εξαμηνο ($7,50/μηνα)\nΜεγιστη εξοικονομηση με προτεραιοτητα υποστηριξης.\n\nΟλα τα πλανα περιλαμβανουν:\n- Απεριοριστα ραντεβου\n- Διαχειριση πελατων & ομαδας\n- AI λειτουργιες\n- Σελιδα κρατησεων\n\nΔωρεαν δοκιμη: https://app.solis-os.com/signup`,
+    industries: (name) => `Το Solis OS ειναι φτιαγμενο για επιχειρησεις υπηρεσιων, ${name}:\n\nΚομμωτηρια & μπαρμπερικα - Κρατησεις και προγραμματισμος\n\nΟμορφια & σπα - Διαχειριση θεραπειων και πακετων\n\nΙατρεια & οδοντιατρεια - Προγραμματισμος ασθενων\n\nΣυνεργεια αυτοκινητων - Κρατησεις και αναθεση μηχανικων\n\nΓυμναστηρια - Προγραμματισμος μαθηματων και γυμναστων\n\nΤι ειδους επιχειρηση εχεις;`,
+    getStarted: (name) => `Το ξεκινημα ειναι πανευκολο, ${name}!\n\n1. Δημιουργησε λογαριασμο: https://app.solis-os.com/signup (30 δευτερολεπτα)\n2. Ρυθμισε το προφιλ της επιχειρησης\n3. Προσθεσε τις υπηρεσιες σου\n4. Προσθεσε την ομαδα σου\n5. Μοιρασου τη σελιδα κρατησεων\n\nΣε 5 λεπτα εισαι ετοιμος. Χωρις πιστωτικη καρτα.\n\nΞεκινα τωρα: https://app.solis-os.com/signup`,
+    demo: (name) => `Με χαρα, ${name}!\n\n1. Επισκεψου το site μας: https://solis-os.com\n2. Δοκιμασε δωρεαν: https://app.solis-os.com/signup\n3. Η γραψε "μιληστε με καποιον" για προσωπικη παρουσιαση`,
+    trial: (name) => `Ναι, ${name}! Προσφερουμε δωρεαν δοκιμη με πληρη προσβαση.\n\nΧωρις καρτα. Χωρις δεσμευση.\n\nΞεκινα: https://app.solis-os.com/signup`,
+    human: (name) => `Φυσικα, ${name}! Ενα μελος της ομαδας μας θα επικοινωνησει μαζι σου συντομα. Ευχαριστουμε για την υπομονη!`,
+    thanks: (name) => `Παρακαλω, ${name}! Χαρηκα που βοηθησα.\n\nΑν εχεις αλλες ερωτησεις, γραψε μας οποτε θελεις.\n\nΞεκινα: https://app.solis-os.com/signup`,
+    bye: (name) => `Ηταν χαρα μου, ${name}! Αν χρειαστεις κατι, γραψε μας.\n\nΚαλη σου μερα!`,
+    yes: (name) => `Τελεια! Προτεινω, ${name}:\n\n1. Ξεκινα δωρεαν δοκιμη: https://app.solis-os.com/signup\n2. Ρυθμισε την επιχειρηση και τις υπηρεσιες\n3. Μοιρασου τη σελιδα κρατησεων\n\nΗ γραψε "demo" για ξεναγηση.`,
+    nonText: "Ευχαριστουμε που επικοινωνησες! Μπορω να σε βοηθησω καλυτερα μεσω κειμενου. Γραψε την ερωτηση σου!",
+    ai: (name) => `Η τεχνητη νοημοσυνη ειναι ο πυρηνας του Solis OS, ${name}:\n\nΕξυπνος προγραμματισμος - Βελτιστοποιει τα ραντεβου σου.\n\nΑναλυση πελατων - Προβλεπει ακυρωσεις.\n\nΒελτιστοποιηση εσοδων - Βρισκει τις πιο κερδοφορες υπηρεσιες.\n\nΑυτοματη παρακολουθηση - Μειωνει τις ακυρωσεις εως 80%.\n\nΔοκιμασε το: https://app.solis-os.com/signup`,
+    support: (name) => `Ειμαι εδω για να βοηθησω, ${name}!\n\nΡωτησε με οτιδηποτε για το Solis OS.\n\nΓια τεχνικη υποστηριξη, γραψε "μιληστε με καποιον".`,
+    booking: (name) => `Το Solis OS κανει τη διαχειριση ραντεβου παιχνιδακι, ${name}!\n\nΣελιδα κρατησεων 24/7\nΕξυπνο ημερολογιο\nΑυτοματες υπενθυμισεις (-80% ακυρωσεις)\nΕυκολη αλλαγη ραντεβου\n\nΞεκινα δωρεαν: https://app.solis-os.com/signup`,
+    security: (name) => `Η ασφαλεια ειναι προτεραιοτητα στο Solis OS, ${name}.\n\n- Κρυπτογραφηση απο ακρη σε ακρη\n- Ασφαλες cloud hosting\n- Ελεγχος προσβασης βασει ρολων\n- Συμμορφωση με GDPR`,
+    app: (name) => `Το Solis OS λειτουργει σε ολες τις συσκευες, ${name}!\n\nΚινητο, Desktop, Tablet.\n\nNative apps για Google Play και App Store ερχονται συντομα!\n\nΞεκινα: https://app.solis-os.com/signup`
+  },
+
+  zh: {
+    welcome: (name) => `你好 ${name}！欢迎来到 Solis OS。\n\n我来帮你了解我们的AI智能企业管理平台。我们为美容院、诊所、汽修店及各类服务型企业提供运营自动化。\n\n你想了解什么？\n\n1. Solis OS 的功能\n2. 价格方案\n3. 支持的行业\n4. 如何开始\n5. 预约演示\n\n输入数字或直接提问！`,
+    welcomeWithAnswer: (name, answer) => `你好 ${name}！欢迎来到 Solis OS。\n\n${answer}`,
+    welcomeGeneric: (name) => `你好 ${name}！欢迎来到 Solis OS，这是一个帮助服务型企业管理预约、客户和团队的AI智能平台。\n\n我能为你做什么？`,
+    fallback: (name) => `感谢你的留言，${name}。你可以问我：\n- 平台功能\n- 价格方案\n- 支持的行业\n- 如何开始使用\n- 预约演示\n\n或者输入"转接人工"联系我们的团队。`,
+    features: (name) => `很好的问题，${name}！Solis OS 能做这些：\n\n预约管理 - 全天候在线预约页面。\n\n客户管理 - 完整的CRM系统，跟踪所有客户。\n\n团队管理 - 管理团队，分配角色。\n\nAI洞察 - 智能分析和优化建议。\n\n自动通知 - WhatsApp和邮件自动发送。\n\n数据面板 - 实时查看收入和预约数据。\n\n想了解价格，还是直接开始免费试用？`,
+    pricing: (name) => `这是我们的方案，${name}：\n\n入门版 - $10/月\n适合个体经营和小型企业。\n\n专业版 - $25/季度（$8.33/月）\n性价比最高。\n\n企业版 - $45/半年（$7.50/月）\n最大优惠，优先客服支持。\n\n所有方案包含：\n- 无限预约\n- 客户和团队管理\n- AI功能\n- 在线预约页面\n\n免费试用：https://app.solis-os.com/signup`,
+    industries: (name) => `Solis OS 专为服务型企业打造，${name}：\n\n美发沙龙和理发店 - 预约和排班\n\n美容和水疗 - 项目管理和套餐\n\n医疗和牙科诊所 - 患者排程\n\n汽车修理厂 - 工单预约和技师分配\n\n健身房 - 课程安排和教练管理\n\n你经营什么类型的生意？`,
+    getStarted: (name) => `开始非常简单，${name}！\n\n1. 注册账户：https://app.solis-os.com/signup（30秒）\n2. 设置企业信息\n3. 添加服务项目\n4. 添加团队成员\n5. 分享预约页面给客户\n\n5分钟搞定。无需信用卡。\n\n立即开始：https://app.solis-os.com/signup`,
+    demo: (name) => `很乐意为你展示，${name}！\n\n1. 访问我们的网站：https://solis-os.com\n2. 免费试用：https://app.solis-os.com/signup\n3. 或输入"转接人工"安排专人演示`,
+    trial: (name) => `当然，${name}！我们提供全功能免费试用。\n\n无需信用卡，没有任何束缚。\n\n开始试用：https://app.solis-os.com/signup`,
+    human: (name) => `没问题，${name}！我们的团队成员会尽快与你联系。感谢你的耐心！`,
+    thanks: (name) => `不客气，${name}！很高兴能帮到你。\n\n有任何问题随时联系我们。\n\n立即开始：https://app.solis-os.com/signup`,
+    bye: (name) => `很高兴和你聊天，${name}！需要帮助随时联系我们。\n\n祝你有美好的一天！`,
+    yes: (name) => `太好了！建议你这样做，${name}：\n\n1. 开始免费试用：https://app.solis-os.com/signup\n2. 设置企业和服务信息\n3. 分享预约页面给客户\n\n或输入"演示"安排一次演示。`,
+    nonText: "感谢联系！我通过文字能更好地帮助你。请输入你的问题！",
+    ai: (name) => `AI是 Solis OS 的核心，${name}：\n\n智能排程 - 优化预约时段。\n\n客户分析 - 预测客户行为和爽约。\n\n收入优化 - 找出最赚钱的服务。\n\n自动跟进 - 减少高达80%的爽约。\n\n免费试用：https://app.solis-os.com/signup`,
+    support: (name) => `我来帮你，${name}！\n\n关于 Solis OS 的任何问题都可以问我。\n\n需要技术支持，请输入"转接人工"。`,
+    booking: (name) => `Solis OS 让预约管理变得轻松，${name}！\n\n全天候在线预约页面\n智能日历\n自动提醒（减少80%爽约）\n轻松改约\n\n免费开始：https://app.solis-os.com/signup`,
+    security: (name) => `安全是 Solis OS 的首要任务，${name}。\n\n- 端到端加密\n- 安全云托管\n- 基于角色的访问控制\n- 符合GDPR规范`,
+    app: (name) => `Solis OS 适用于所有设备，${name}！\n\n手机、电脑、平板都能用。\n\nGoogle Play 和 App Store 原生应用即将推出！\n\n立即开始：https://app.solis-os.com/signup`
+  },
+
+  ja: {
+    welcome: (name) => `こんにちは ${name}さん！Solis OSへようこそ。\n\nAI搭載のビジネス管理プラットフォームについてご案内します。サロン、クリニック、整備工場など、サービス業の業務自動化をお手伝いします。\n\n何についてお知りになりたいですか？\n\n1. Solis OSの機能\n2. 料金プラン\n3. 対応業種\n4. 始め方\n5. デモ予約\n\n番号を入力するか、ご質問をどうぞ！`,
+    welcomeWithAnswer: (name, answer) => `こんにちは ${name}さん！Solis OSへようこそ。\n\n${answer}`,
+    welcomeGeneric: (name) => `こんにちは ${name}さん！Solis OSへようこそ。予約・顧客・チーム管理をAIで支援するプラットフォームです。\n\nどのようにお手伝いできますか？`,
+    fallback: (name) => `メッセージありがとうございます、${name}さん。以下についてお尋ねいただけます：\n- 機能について\n- 料金プラン\n- 対応業種\n- 始め方\n- デモ予約\n\nまたは「担当者に繋いで」と入力してください。`,
+    features: (name) => `いい質問ですね、${name}さん！Solis OSでできること：\n\n予約管理 - 24時間オンライン予約ページ。\n\n顧客管理 - 全顧客を追跡するCRM。\n\nチーム管理 - スタッフの役割と勤務管理。\n\nAI分析 - スマートな分析と改善提案。\n\n自動通知 - WhatsAppとメールの自動送信。\n\nダッシュボード - 売上と予約のリアルタイムデータ。\n\n料金を確認しますか？それとも無料トライアルを始めますか？`,
+    pricing: (name) => `料金プランはこちらです、${name}さん：\n\nスターター - $10/月\n個人事業や小規模ビジネスに最適。\n\nプロフェッショナル - $25/四半期（$8.33/月）\nコスパ最高。\n\nエンタープライズ - $45/半年（$7.50/月）\n最大の割引と優先サポート付き。\n\n全プラン共通：\n- 無制限の予約\n- 顧客＆チーム管理\n- AI機能\n- オンライン予約ページ\n\n無料トライアル：https://app.solis-os.com/signup`,
+    industries: (name) => `Solis OSはサービス業向けに作られています、${name}さん：\n\n美容室・理容室 - 予約とスタイリストのスケジュール管理\n\nエステ・スパ - 施術予約とパッケージ管理\n\n医療・歯科クリニック - 患者予約と医師管理\n\n自動車整備工場 - 作業予約とメカニック配置\n\nジム・フィットネス - クラススケジュールとトレーナー管理\n\nどのような事業をされていますか？`,
+    getStarted: (name) => `始め方はとても簡単です、${name}さん！\n\n1. アカウント作成：https://app.solis-os.com/signup（30秒）\n2. ビジネスプロフィールを設定\n3. サービスを追加\n4. チームメンバーを追加\n5. 予約ページを顧客に共有\n\n5分で完了。クレジットカード不要。\n\n今すぐ始める：https://app.solis-os.com/signup`,
+    demo: (name) => `ぜひご案内します、${name}さん！\n\n1. ウェブサイトをご覧ください：https://solis-os.com\n2. 無料で試す：https://app.solis-os.com/signup\n3. または「担当者に繋いで」で個別デモを手配します`,
+    trial: (name) => `はい、${name}さん！全機能を使える無料トライアルをご用意しています。\n\nクレジットカード不要。縛りなし。\n\n今すぐ始める：https://app.solis-os.com/signup`,
+    human: (name) => `もちろんです、${name}さん！チームのメンバーが間もなくご連絡いたします。お待ちいただきありがとうございます！`,
+    thanks: (name) => `どういたしまして、${name}さん！お役に立てて嬉しいです。\n\n他にご質問があればいつでもどうぞ。\n\n始める：https://app.solis-os.com/signup`,
+    bye: (name) => `お話しできて良かったです、${name}さん！何かあればいつでもご連絡ください。\n\n素敵な一日を！`,
+    yes: (name) => `素晴らしい！おすすめは、${name}さん：\n\n1. 無料トライアルを始める：https://app.solis-os.com/signup\n2. ビジネスとサービスを設定\n3. 予約ページを顧客に共有\n\nまたは「デモ」と入力してガイドツアーをどうぞ。`,
+    nonText: "お問い合わせありがとうございます！テキストメッセージでのご対応が最も的確です。ご質問を入力してください！",
+    ai: (name) => `AIはSolis OSの中核です、${name}さん：\n\nスマートスケジューリング - 予約枠を最適化。\n\n顧客分析 - 行動パターンを把握しキャンセルを予測。\n\n収益最適化 - 最も収益性の高いサービスを特定。\n\n自動フォロー - キャンセルを最大80%削減。\n\n無料で試す：https://app.solis-os.com/signup`,
+    support: (name) => `お手伝いします、${name}さん！\n\nSolis OSについて何でもお聞きください。\n\n技術サポートが必要な場合は「担当者に繋いで」と入力してください。`,
+    booking: (name) => `Solis OSで予約管理が楽になります、${name}さん！\n\n24時間オンライン予約ページ\nスマートカレンダー\n自動リマインダー（キャンセル80%減）\n簡単リスケジュール\n\n無料で始める：https://app.solis-os.com/signup`,
+    security: (name) => `セキュリティはSolis OSの最優先事項です、${name}さん。\n\n- エンドツーエンド暗号化\n- 安全なクラウドホスティング\n- ロールベースのアクセス制御\n- GDPR準拠`,
+    app: (name) => `Solis OSはすべてのデバイスで使えます、${name}さん！\n\nスマホ、PC、タブレット対応。\n\nGoogle PlayとApp Storeのネイティブアプリも近日公開！\n\n今すぐ始める：https://app.solis-os.com/signup`
+  },
+
+  ko: {
+    welcome: (name) => `안녕하세요 ${name}님! Solis OS에 오신 것을 환영합니다.\n\nAI 기반 비즈니스 관리 플랫폼에 대해 안내해 드리겠습니다. 미용실, 클리닉, 정비소 등 서비스 업종의 운영 자동화를 도와드립니다.\n\n무엇이 궁금하신가요?\n\n1. Solis OS 기능\n2. 요금제\n3. 지원 업종\n4. 시작하는 방법\n5. 데모 예약\n\n번호를 입력하거나 질문해 주세요!`,
+    welcomeWithAnswer: (name, answer) => `안녕하세요 ${name}님! Solis OS에 오신 것을 환영합니다.\n\n${answer}`,
+    welcomeGeneric: (name) => `안녕하세요 ${name}님! Solis OS에 오신 것을 환영합니다. 예약, 고객, 팀 관리를 AI로 지원하는 플랫폼입니다.\n\n어떻게 도와드릴까요?`,
+    fallback: (name) => `메시지 감사합니다, ${name}님. 다음에 대해 물어보실 수 있습니다:\n- 기능 소개\n- 요금제\n- 지원 업종\n- 시작 방법\n- 데모 예약\n\n또는 "상담사 연결"이라고 입력하시면 팀에 연결해 드립니다.`,
+    features: (name) => `좋은 질문이에요, ${name}님! Solis OS가 하는 일:\n\n예약 관리 - 24시간 온라인 예약 페이지.\n\n고객 관리 - 모든 고객을 추적하는 CRM.\n\n팀 관리 - 역할 배정과 근무 관리.\n\nAI 인사이트 - 스마트 분석과 개선 제안.\n\n자동 알림 - WhatsApp과 이메일 자동 발송.\n\n대시보드 - 매출과 예약 실시간 데이터.\n\n요금제를 확인하시겠어요, 아니면 무료 체험을 시작하시겠어요?`,
+    pricing: (name) => `요금제 안내입니다, ${name}님:\n\n스타터 - $10/월\n소규모 사업자에게 딱 맞는 요금제.\n\n프로페셔널 - $25/분기 ($8.33/월)\n가성비 최고.\n\n엔터프라이즈 - $45/반년 ($7.50/월)\n최대 할인과 우선 지원.\n\n모든 요금제 포함 사항:\n- 무제한 예약\n- 고객 & 팀 관리\n- AI 기능\n- 온라인 예약 페이지\n\n무료 체험: https://app.solis-os.com/signup`,
+    industries: (name) => `Solis OS는 서비스 업종을 위해 만들어졌습니다, ${name}님:\n\n미용실 & 이발소 - 예약과 스타일리스트 스케줄\n\n뷰티 & 스파 - 시술 예약과 패키지 관리\n\n의원 & 치과 - 환자 예약과 의사 관리\n\n자동차 정비소 - 작업 예약과 정비사 배정\n\n헬스장 & 피트니스 - 수업 스케줄과 트레이너 관리\n\n어떤 사업을 하고 계신가요?`,
+    getStarted: (name) => `시작은 정말 쉽습니다, ${name}님!\n\n1. 계정 만들기: https://app.solis-os.com/signup (30초)\n2. 비즈니스 프로필 설정\n3. 서비스 추가\n4. 팀원 추가\n5. 예약 페이지를 고객에게 공유\n\n5분이면 끝. 신용카드 불필요.\n\n지금 시작: https://app.solis-os.com/signup`,
+    demo: (name) => `기꺼이 보여드리겠습니다, ${name}님!\n\n1. 웹사이트 방문: https://solis-os.com\n2. 무료 체험: https://app.solis-os.com/signup\n3. 또는 "상담사 연결"로 개인 데모 요청`,
+    trial: (name) => `네, ${name}님! 모든 기능을 사용할 수 있는 무료 체험을 제공합니다.\n\n신용카드 불필요. 부담 없이 시작하세요.\n\n체험 시작: https://app.solis-os.com/signup`,
+    human: (name) => `물론이죠, ${name}님! 팀원이 곧 연락드리겠습니다. 기다려 주셔서 감사합니다!`,
+    thanks: (name) => `천만에요, ${name}님! 도움이 되어 기쁩니다.\n\n다른 질문이 있으시면 언제든 연락주세요.\n\n시작하기: https://app.solis-os.com/signup`,
+    bye: (name) => `대화 즐거웠습니다, ${name}님! 필요하시면 언제든 연락주세요.\n\n좋은 하루 보내세요!`,
+    yes: (name) => `좋습니다! 추천드리는 방법, ${name}님:\n\n1. 무료 체험 시작: https://app.solis-os.com/signup\n2. 비즈니스와 서비스 설정\n3. 예약 페이지를 고객에게 공유\n\n또는 "데모"라고 입력해 가이드 투어를 받아보세요.`,
+    nonText: "연락해 주셔서 감사합니다! 텍스트 메시지로 더 정확하게 도와드릴 수 있습니다. 질문을 입력해 주세요!",
+    ai: (name) => `AI는 Solis OS의 핵심입니다, ${name}님:\n\n스마트 스케줄링 - 예약 시간대 최적화.\n\n고객 분석 - 행동 패턴 파악과 노쇼 예측.\n\n매출 최적화 - 가장 수익성 높은 서비스 파악.\n\n자동 팔로업 - 노쇼를 최대 80% 감소.\n\n무료 체험: https://app.solis-os.com/signup`,
+    support: (name) => `도와드리겠습니다, ${name}님!\n\nSolis OS에 대해 무엇이든 물어보세요.\n\n기술 지원이 필요하시면 "상담사 연결"이라고 입력해 주세요.`,
+    booking: (name) => `Solis OS로 예약 관리가 간편해집니다, ${name}님!\n\n24시간 온라인 예약 페이지\n스마트 캘린더\n자동 리마인더 (노쇼 80% 감소)\n간편 일정 변경\n\n무료 시작: https://app.solis-os.com/signup`,
+    security: (name) => `보안은 Solis OS의 최우선 과제입니다, ${name}님.\n\n- 종단간 암호화\n- 안전한 클라우드 호스팅\n- 역할 기반 접근 제어\n- GDPR 준수`,
+    app: (name) => `Solis OS는 모든 기기에서 사용 가능합니다, ${name}님!\n\n모바일, 데스크톱, 태블릿 지원.\n\nGoogle Play와 App Store 네이티브 앱 곧 출시!\n\n지금 시작: https://app.solis-os.com/signup`
   }
 };
 
@@ -96,15 +257,40 @@ function detectLanguage(text) {
   const arabicRegex = /[؀-ۿݐ-ݿࢠ-ࣿ]/;
   if (arabicRegex.test(text)) return 'ar';
 
+  // CJK character ranges
+  const chineseRegex = /[一-鿿㐀-䶿]/;
+  if (chineseRegex.test(text)) return 'zh';
+
+  const japaneseRegex = /[぀-ゟ゠-ヿ]/;
+  if (japaneseRegex.test(text)) return 'ja';
+
+  const koreanRegex = /[가-힯ᄀ-ᇿ㄰-㆏]/;
+  if (koreanRegex.test(text)) return 'ko';
+
+  const greekRegex = /[Ͱ-Ͽἀ-῿]/;
+  if (greekRegex.test(text)) return 'el';
+
+  const lower = text.toLowerCase();
+
+  const germanWords = ['hallo', 'guten tag', 'guten morgen', 'danke', 'bitte', 'preis', 'kosten', 'wie viel', 'hilfe', 'funktionen', 'buchung', 'termin', 'anfangen', 'sprechen', 'ja', 'nein', 'ich moechte', 'was ist', 'wie geht'];
+  const italianWords = ['ciao', 'buongiorno', 'grazie', 'prezzo', 'quanto', 'aiuto', 'prenotazione', 'funzionalita', 'iniziare', 'parlare', 'voglio', 'come', 'buonasera', 'salve', 'perfetto'];
+  const portugueseWords = ['ola', 'bom dia', 'obrigado', 'obrigada', 'preco', 'quanto', 'ajuda', 'agendamento', 'comecar', 'falar', 'quero', 'preciso', 'funcionalidades', 'como funciona', 'boa tarde', 'boa noite'];
   const frenchWords = ['bonjour', 'salut', 'merci', 'comment', 'prix', 'combien', 'fonctionnalites', 'aide', 'parler', 'reservation', 'oui', 'non', 'bonsoir', 'bonne', 'je veux', 'je voudrais', 'est-ce que', "c'est quoi", "qu'est"];
   const spanishWords = ['hola', 'gracias', 'precio', 'cuanto', 'ayuda', 'hablar', 'reserva', 'quiero', 'necesito', 'buenas', 'buenos', 'como', 'funciona', 'puedo', 'donde'];
 
-  const lower = text.toLowerCase();
+  const deCount = germanWords.filter(w => lower.includes(w)).length;
+  const itCount = italianWords.filter(w => lower.includes(w)).length;
+  const ptCount = portugueseWords.filter(w => lower.includes(w)).length;
   const frCount = frenchWords.filter(w => lower.includes(w)).length;
   const spCount = spanishWords.filter(w => lower.includes(w)).length;
 
-  if (frCount >= 1) return 'fr';
-  if (spCount >= 1) return 'es';
+  // Pick the language with the most keyword matches; require at least 1
+  const scores = { de: deCount, it: itCount, pt: ptCount, fr: frCount, es: spCount };
+  let best = null, bestCount = 0;
+  for (const [lang, count] of Object.entries(scores)) {
+    if (count > bestCount) { best = lang; bestCount = count; }
+  }
+  if (best && bestCount >= 1) return best;
 
   return 'en';
 }
