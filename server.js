@@ -60,7 +60,11 @@ app.post('/webhook', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Solis OS Chatbot running on port ${PORT}`);
-});
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Solis OS Chatbot running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
