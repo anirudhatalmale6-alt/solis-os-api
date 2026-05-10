@@ -6,6 +6,14 @@ const { sendWhatsAppMessage } = require('./whatsapp');
 const app = express();
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  if (req.method === 'OPTIONS') return res.sendStatus(200);
+  next();
+});
+
 app.get('/', (req, res) => {
   res.json({ status: 'Solis OS WhatsApp Chatbot is running' });
 });
@@ -57,6 +65,20 @@ app.post('/webhook', async (req, res) => {
     }
   } catch (err) {
     console.error('Webhook processing error:', err);
+  }
+});
+
+app.post('/chat', (req, res) => {
+  try {
+    const { message, sessionId, name } = req.body;
+    if (!message) return res.status(400).json({ error: 'Message required' });
+    const sid = sessionId || `web_${Date.now()}_${Math.random().toString(36).substr(2,9)}`;
+    const userName = name || 'there';
+    const reply = handleIncomingMessage(message, userName, sid);
+    res.json({ reply, sessionId: sid });
+  } catch (err) {
+    console.error('Chat API error:', err);
+    res.status(500).json({ error: 'Internal error' });
   }
 });
 
