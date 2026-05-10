@@ -68,6 +68,40 @@ app.post('/webhook', async (req, res) => {
   }
 });
 
+app.post('/auth/signup', async (req, res) => {
+  try {
+    const { email, password, fullName } = req.body;
+    if (!email || !password) return res.status(400).json({ error: 'Email and password required' });
+
+    const SUPABASE_URL = process.env.SUPABASE_URL || 'https://joeklgpncbrhnujzdzsp.supabase.co';
+    const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!SERVICE_ROLE_KEY) return res.status(500).json({ error: 'Server not configured' });
+
+    const resp = await fetch(`${SUPABASE_URL}/auth/v1/admin/users`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${SERVICE_ROLE_KEY}`,
+        'apikey': SERVICE_ROLE_KEY,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        email_confirm: true,
+        user_metadata: { full_name: fullName || '' },
+      }),
+    });
+
+    const userData = await resp.json();
+    if (!resp.ok) return res.status(resp.status).json({ error: userData.msg || userData.message || 'Signup failed' });
+
+    res.json({ user: { id: userData.id, email: userData.email, full_name: fullName } });
+  } catch (err) {
+    console.error('Signup error:', err);
+    res.status(500).json({ error: 'Internal error' });
+  }
+});
+
 app.post('/chat', (req, res) => {
   try {
     const { message, sessionId, name } = req.body;
