@@ -102,6 +102,59 @@ app.post('/auth/signup', async (req, res) => {
   }
 });
 
+app.post('/api/public-booking', async (req, res) => {
+  try {
+    const { business_id, service_id, customer_name, customer_phone, customer_email, date, time, duration, notes } = req.body;
+    if (!business_id || !service_id || !customer_name || !customer_phone || !date || !time) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const SUPABASE_URL = process.env.SUPABASE_URL || 'https://joeklgpncbrhnujzdzsp.supabase.co';
+    const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!SERVICE_ROLE_KEY) return res.status(500).json({ error: 'Server not configured' });
+
+    const booking = { business_id, service_id, customer_name, customer_phone, date, time, duration: duration || 30, notes: notes || '', status: 'confirmed' };
+    if (customer_email) booking.customer_email = customer_email;
+
+    const resp = await fetch(`${SUPABASE_URL}/rest/v1/bookings`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${SERVICE_ROLE_KEY}`,
+        'apikey': SERVICE_ROLE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation',
+      },
+      body: JSON.stringify(booking),
+    });
+
+    const data = await resp.json();
+    if (!resp.ok) return res.status(resp.status).json({ error: data.message || 'Booking failed' });
+
+    const created = Array.isArray(data) ? data[0] : data;
+
+    const custResp = await fetch(`${SUPABASE_URL}/rest/v1/customers?business_id=eq.${business_id}&customer_phone=eq.${encodeURIComponent(customer_phone)}`, {
+      headers: { 'Authorization': `Bearer ${SERVICE_ROLE_KEY}`, 'apikey': SERVICE_ROLE_KEY },
+    });
+    const existingCustomers = await custResp.json();
+    if (Array.isArray(existingCustomers) && existingCustomers.length === 0) {
+      await fetch(`${SUPABASE_URL}/rest/v1/customers`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${SERVICE_ROLE_KEY}`,
+          'apikey': SERVICE_ROLE_KEY,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ business_id, name: customer_name, phone: customer_phone, email: customer_email || null }),
+      });
+    }
+
+    res.json({ data: created });
+  } catch (err) {
+    console.error('Public booking error:', err);
+    res.status(500).json({ error: 'Internal error' });
+  }
+});
+
 app.post('/chat', (req, res) => {
   try {
     const { message, sessionId, name } = req.body;
