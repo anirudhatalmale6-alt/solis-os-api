@@ -1,7 +1,17 @@
 require('dotenv').config();
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const { handleIncomingMessage } = require('./chatbot');
 const { sendWhatsAppMessage } = require('./whatsapp');
+
+const WHATSAPP_DATA_FILE = path.join(__dirname, 'whatsapp_numbers.json');
+function loadWhatsappData() {
+  try { return JSON.parse(fs.readFileSync(WHATSAPP_DATA_FILE, 'utf8')); } catch { return {}; }
+}
+function saveWhatsappData(data) {
+  fs.writeFileSync(WHATSAPP_DATA_FILE, JSON.stringify(data, null, 2));
+}
 
 const app = express();
 app.use(express.json());
@@ -230,6 +240,19 @@ app.patch('/api/bookings/:id', async (req, res) => {
     console.error('Update booking error:', err);
     res.status(500).json({ error: 'Internal error' });
   }
+});
+
+app.get('/api/whatsapp/:businessId', (req, res) => {
+  const data = loadWhatsappData();
+  res.json({ whatsapp_number: data[req.params.businessId] || '' });
+});
+
+app.post('/api/whatsapp/:businessId', (req, res) => {
+  const { whatsapp_number } = req.body;
+  const data = loadWhatsappData();
+  data[req.params.businessId] = whatsapp_number || '';
+  saveWhatsappData(data);
+  res.json({ success: true });
 });
 
 app.post('/chat', (req, res) => {
