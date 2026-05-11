@@ -9,7 +9,7 @@ app.use(express.json());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
   if (req.method === 'OPTIONS') return res.sendStatus(200);
   next();
 });
@@ -104,7 +104,7 @@ app.post('/auth/signup', async (req, res) => {
 
 app.post('/api/public-booking', async (req, res) => {
   try {
-    const { business_id, service_id, customer_name, customer_phone, customer_email, date, time, duration, notes } = req.body;
+    const { business_id, service_id, service_name, customer_name, customer_phone, customer_email, date, time, duration, notes } = req.body;
     if (!business_id || !service_id || !customer_name || !customer_phone || !date || !time) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
@@ -114,6 +114,7 @@ app.post('/api/public-booking', async (req, res) => {
     if (!SERVICE_ROLE_KEY) return res.status(500).json({ error: 'Server not configured' });
 
     const booking = { business_id, service_id, customer_name, customer_phone, date, time, duration: duration || 30, notes: notes || '', status: 'confirmed' };
+    if (service_name) booking.service_name = service_name;
     if (customer_email) booking.customer_email = customer_email;
 
     const resp = await fetch(`${SUPABASE_URL}/rest/v1/bookings`, {
@@ -132,7 +133,7 @@ app.post('/api/public-booking', async (req, res) => {
 
     const created = Array.isArray(data) ? data[0] : data;
 
-    const custResp = await fetch(`${SUPABASE_URL}/rest/v1/customers?business_id=eq.${business_id}&customer_phone=eq.${encodeURIComponent(customer_phone)}`, {
+    const custResp = await fetch(`${SUPABASE_URL}/rest/v1/customers?business_id=eq.${business_id}&phone=eq.${encodeURIComponent(customer_phone)}`, {
       headers: { 'Authorization': `Bearer ${SERVICE_ROLE_KEY}`, 'apikey': SERVICE_ROLE_KEY },
     });
     const existingCustomers = await custResp.json();
@@ -151,6 +152,82 @@ app.post('/api/public-booking', async (req, res) => {
     res.json({ data: created });
   } catch (err) {
     console.error('Public booking error:', err);
+    res.status(500).json({ error: 'Internal error' });
+  }
+});
+
+app.get('/api/business', async (req, res) => {
+  try {
+    const { owner_id } = req.query;
+    if (!owner_id) return res.status(400).json({ error: 'owner_id required' });
+
+    const SUPABASE_URL = process.env.SUPABASE_URL || 'https://joeklgpncbrhnujzdzsp.supabase.co';
+    const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!SERVICE_ROLE_KEY) return res.status(500).json({ error: 'Server not configured' });
+
+    const resp = await fetch(`${SUPABASE_URL}/rest/v1/businesses?owner_id=eq.${owner_id}`, {
+      headers: { 'Authorization': `Bearer ${SERVICE_ROLE_KEY}`, 'apikey': SERVICE_ROLE_KEY },
+    });
+    const data = await resp.json();
+    if (Array.isArray(data) && data.length > 0) {
+      res.json(data[0]);
+    } else {
+      res.json(null);
+    }
+  } catch (err) {
+    console.error('Get business error:', err);
+    res.status(500).json({ error: 'Internal error' });
+  }
+});
+
+app.get('/api/bookings', async (req, res) => {
+  try {
+    const { business_id } = req.query;
+    if (!business_id) return res.status(400).json({ error: 'business_id required' });
+
+    const SUPABASE_URL = process.env.SUPABASE_URL || 'https://joeklgpncbrhnujzdzsp.supabase.co';
+    const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!SERVICE_ROLE_KEY) return res.status(500).json({ error: 'Server not configured' });
+
+    let url = `${SUPABASE_URL}/rest/v1/bookings?business_id=eq.${business_id}&order=date.asc,time.asc`;
+    const { date } = req.query;
+    if (date) url += `&date=eq.${date}`;
+
+    const resp = await fetch(url, {
+      headers: { 'Authorization': `Bearer ${SERVICE_ROLE_KEY}`, 'apikey': SERVICE_ROLE_KEY },
+    });
+    const data = await resp.json();
+    res.json(data);
+  } catch (err) {
+    console.error('Get bookings error:', err);
+    res.status(500).json({ error: 'Internal error' });
+  }
+});
+
+app.patch('/api/bookings/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updates = req.body;
+
+    const SUPABASE_URL = process.env.SUPABASE_URL || 'https://joeklgpncbrhnujzdzsp.supabase.co';
+    const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!SERVICE_ROLE_KEY) return res.status(500).json({ error: 'Server not configured' });
+
+    const resp = await fetch(`${SUPABASE_URL}/rest/v1/bookings?id=eq.${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${SERVICE_ROLE_KEY}`,
+        'apikey': SERVICE_ROLE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation',
+      },
+      body: JSON.stringify(updates),
+    });
+    const data = await resp.json();
+    if (!resp.ok) return res.status(resp.status).json({ error: data.message || 'Update failed' });
+    res.json(Array.isArray(data) ? data[0] : data);
+  } catch (err) {
+    console.error('Update booking error:', err);
     res.status(500).json({ error: 'Internal error' });
   }
 });
