@@ -13,6 +13,16 @@ function saveWhatsappData(data) {
   fs.writeFileSync(WHATSAPP_DATA_FILE, JSON.stringify(data, null, 2));
 }
 
+const BDATA_DIR = path.join(__dirname, 'business_data');
+if (!fs.existsSync(BDATA_DIR)) fs.mkdirSync(BDATA_DIR, { recursive: true });
+function bdataPath(bizId) { return path.join(BDATA_DIR, `${bizId}.json`); }
+function loadBdata(bizId) {
+  try { return JSON.parse(fs.readFileSync(bdataPath(bizId), 'utf8')); } catch { return {}; }
+}
+function saveBdata(bizId, data) {
+  fs.writeFileSync(bdataPath(bizId), JSON.stringify(data));
+}
+
 const app = express();
 app.use(express.json());
 
@@ -252,6 +262,31 @@ app.post('/api/whatsapp/:businessId', (req, res) => {
   const data = loadWhatsappData();
   data[req.params.businessId] = whatsapp_number || '';
   saveWhatsappData(data);
+  res.json({ success: true });
+});
+
+app.get('/api/data/:businessId', (req, res) => {
+  const data = loadBdata(req.params.businessId);
+  const { key } = req.query;
+  if (key) return res.json({ value: data[key] ?? null });
+  res.json(data);
+});
+
+app.put('/api/data/:businessId', (req, res) => {
+  const { key, value } = req.body;
+  if (!key) return res.status(400).json({ error: 'key required' });
+  const data = loadBdata(req.params.businessId);
+  data[key] = value;
+  saveBdata(req.params.businessId, data);
+  res.json({ success: true });
+});
+
+app.put('/api/data/:businessId/bulk', (req, res) => {
+  const items = req.body;
+  if (!items || typeof items !== 'object') return res.status(400).json({ error: 'object required' });
+  const data = loadBdata(req.params.businessId);
+  Object.assign(data, items);
+  saveBdata(req.params.businessId, data);
   res.json({ success: true });
 });
 
