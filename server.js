@@ -13,6 +13,19 @@ function saveWhatsappData(data) {
   fs.writeFileSync(WHATSAPP_DATA_FILE, JSON.stringify(data, null, 2));
 }
 
+const LEADS_FILE = path.join(__dirname, 'leads_log.json');
+function loadLeads() {
+  try { return JSON.parse(fs.readFileSync(LEADS_FILE, 'utf8')); } catch { return []; }
+}
+function logLead(phone, name, direction, text) {
+  try {
+    let leads = loadLeads();
+    leads.push({ id: `${Date.now()}_${Math.random().toString(36).slice(2,8)}`, phone, name, direction, text, timestamp: new Date().toISOString() });
+    if (leads.length > 5000) leads = leads.slice(-5000);
+    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads));
+  } catch (err) { console.error('Lead log error:', err.message); }
+}
+
 const BDATA_DIR = path.join(__dirname, 'business_data');
 if (!fs.existsSync(BDATA_DIR)) fs.mkdirSync(BDATA_DIR, { recursive: true });
 function bdataPath(bizId) { return path.join(BDATA_DIR, `${bizId}.json`); }
@@ -78,8 +91,10 @@ app.post('/webhook', async (req, res) => {
           const senderName = value.contacts?.[0]?.profile?.name || 'there';
           console.log(`Message from ${senderName} (${message.from}): ${userText}`);
 
+          logLead(message.from, senderName, 'inbound', userText);
           const reply = handleIncomingMessage(userText, senderName, message.from);
           await sendWhatsAppMessage(message.from, reply);
+          logLead(message.from, senderName, 'outbound', reply);
         }
       }
     }
@@ -120,6 +135,19 @@ app.post('/auth/signup', async (req, res) => {
     console.error('Signup error:', err);
     res.status(500).json({ error: 'Internal error' });
   }
+});
+
+app.get('/api/admin/leads', (req, res) => {
+  const leads = loadLeads();
+  const convos = {};
+  for (const m of leads) {
+    if (!convos[m.phone]) convos[m.phone] = { phone: m.phone, name: m.name, messages: [], lastMessage: m.timestamp };
+    convos[m.phone].messages.push(m);
+    convos[m.phone].lastMessage = m.timestamp;
+    if (m.name && m.name !== 'there') convos[m.phone].name = m.name;
+  }
+  const sorted = Object.values(convos).sort((a, b) => b.lastMessage.localeCompare(a.lastMessage));
+  res.json({ conversations: sorted, totalMessages: leads.length, totalContacts: sorted.length });
 });
 
 app.get('/api/admin/signups', async (req, res) => {
