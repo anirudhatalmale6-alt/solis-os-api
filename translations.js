@@ -19,7 +19,8 @@ const translations = {
     support: (name) => `I'm here to help, ${name}!\n\nFor quick answers, you can ask me anything about Solis OS right here.\n\nIf you need technical support, just reply with "speak to someone" and we'll get a team member to help you.\n\nWhat do you need help with?`,
     booking: (name) => `Solis OS makes booking management effortless, ${name}!\n\nOnline Booking Page - Your customers can book 24/7 from their phone or computer.\n\nSmart Calendar - See all your appointments in one place.\n\nAutomatic Reminders - Customers get reminders before their appointment. Reduces no-shows by up to 80%.\n\nEasy Rescheduling - Customers can reschedule themselves.\n\nWould you like to set up your booking page? It's free to start: https://app.solis-os.com/signup`,
     security: (name) => `Security is a top priority at Solis OS, ${name}.\n\nYour data is protected with:\n- End-to-end encryption\n- Secure cloud hosting with automatic backups\n- Role-based access control\n- GDPR-compliant data handling\n\nYour customers' information is safe with us.`,
-    app: (name) => `Solis OS works on all devices, ${name}!\n\nMobile - Works like a native app from your phone browser.\n\nDesktop - Full dashboard at https://app.solis-os.com\n\nTablet - Perfect for reception desks.\n\nNative apps for Google Play and App Store are coming soon!\n\nStart using Solis OS now: https://app.solis-os.com/signup`
+    app: (name) => `Solis OS works on all devices, ${name}!\n\nMobile - Works like a native app from your phone browser.\n\nDesktop - Full dashboard at https://app.solis-os.com\n\nTablet - Perfect for reception desks.\n\nNative apps for Google Play and App Store are coming soon!\n\nStart using Solis OS now: https://app.solis-os.com/signup`,
+    language: (name) => `Solis OS supports multiple languages, ${name}!\n\nOur platform and chatbot work in:\n- English\n- Arabic\n- French\n- Spanish\n- German\n- Italian\n- Portuguese\n- Greek\n- Chinese\n- Japanese\n- Korean\n\nThe chatbot automatically detects your language and responds accordingly. Just write in your preferred language and I'll reply in the same language!\n\nThe app interface also supports multiple languages. Would you like to know anything else?`
   },
 
   ar: {
@@ -42,7 +43,8 @@ const translations = {
     support: (name) => `أنا هنا للمساعدة ${name}!\n\nاسألني أي شيء عن Solis OS هنا.\n\nللدعم الفني، اكتب "تحدث مع شخص".\n\nبماذا يمكنني مساعدتك؟`,
     booking: (name) => `Solis OS يجعل إدارة الحجوزات سهلة ${name}!\n\nصفحة حجز أونلاين - عملاؤك يحجزون 24/7\n\nتقويم ذكي - كل مواعيدك في مكان واحد\n\nتذكيرات تلقائية - تقلل التغيب بنسبة 80%\n\nإعادة جدولة سهلة - العملاء يعيدون الجدولة بأنفسهم\n\nابدأ مجانا: https://app.solis-os.com/signup`,
     security: (name) => `الأمان أولوية في Solis OS ${name}.\n\nبياناتك محمية بـ:\n- تشفير كامل\n- استضافة سحابية آمنة\n- التحكم بالصلاحيات\n- متوافق مع GDPR\n\nبيانات عملائك آمنة معنا.`,
-    app: (name) => `Solis OS يعمل على جميع الأجهزة ${name}!\n\nالجوال - يعمل كتطبيق من متصفح هاتفك\n\nالكمبيوتر - لوحة تحكم كاملة: https://app.solis-os.com\n\nالتابلت - مثالي لمكاتب الاستقبال\n\nتطبيقات Google Play و App Store قريبا!\n\nابدأ الآن: https://app.solis-os.com/signup`
+    app: (name) => `Solis OS يعمل على جميع الأجهزة ${name}!\n\nالجوال - يعمل كتطبيق من متصفح هاتفك\n\nالكمبيوتر - لوحة تحكم كاملة: https://app.solis-os.com\n\nالتابلت - مثالي لمكاتب الاستقبال\n\nتطبيقات Google Play و App Store قريبا!\n\nابدأ الآن: https://app.solis-os.com/signup`,
+    language: (name) => `Solis OS يدعم عدة لغات ${name}!\n\nمنصتنا والشات بوت يعملان بـ:\n- الإنجليزية\n- العربية\n- الفرنسية\n- الإسبانية\n- الألمانية\n- الإيطالية\n- البرتغالية\n- اليونانية\n- الصينية\n- اليابانية\n- الكورية\n\nالشات بوت يكتشف لغتك تلقائيا ويرد بنفس اللغة! اكتب بلغتك المفضلة وسأرد بها.\n\nهل تريد معرفة أي شيء آخر؟`
   },
 
   fr: {
@@ -65,7 +67,8 @@ const translations = {
     support: (name) => `Je suis la pour vous aider, ${name} !\n\nPosez-moi n'importe quelle question ici.\n\nPour le support technique, tapez "parler a quelqu'un".`,
     booking: (name) => `Solis OS simplifie les reservations, ${name} !\n\nPage de reservation 24/7\nCalendrier intelligent\nRappels automatiques (-80% d'absences)\nReprogrammation facile\n\nCommencez : https://app.solis-os.com/signup`,
     security: (name) => `La securite est une priorite, ${name}.\n\n- Chiffrement complet\n- Hebergement securise\n- Controle des acces\n- Conforme RGPD`,
-    app: (name) => `Solis OS fonctionne partout, ${name} !\n\nMobile, Desktop, Tablette.\n\nApps natives bientot disponibles !\n\nCommencez : https://app.solis-os.com/signup`
+    app: (name) => `Solis OS fonctionne partout, ${name} !\n\nMobile, Desktop, Tablette.\n\nApps natives bientot disponibles !\n\nCommencez : https://app.solis-os.com/signup`,
+    language: (name) => `Solis OS supporte plusieurs langues, ${name} !\n\nNotre plateforme et chatbot fonctionnent en :\nAnglais, Arabe, Francais, Espagnol, Allemand, Italien, Portugais, Grec, Chinois, Japonais, Coreen\n\nLe chatbot detecte automatiquement votre langue et repond dans la meme langue !\n\nVoulez-vous savoir autre chose ?`
   },
 
   es: {
@@ -88,7 +91,8 @@ const translations = {
     support: (name) => `Estoy aqui para ayudarte, ${name}!\n\nPreguntame lo que quieras aqui.\n\nPara soporte tecnico, escribe "hablar con alguien".`,
     booking: (name) => `Solis OS simplifica las reservas, ${name}!\n\nPagina de reservas 24/7\nCalendario inteligente\nRecordatorios automaticos\nReprogramacion facil\n\nEmpieza: https://app.solis-os.com/signup`,
     security: (name) => `La seguridad es prioridad, ${name}.\n\n- Encriptacion completa\n- Hosting seguro\n- Control de accesos\n- Cumple con GDPR`,
-    app: (name) => `Solis OS funciona en todos los dispositivos, ${name}!\n\nMovil, Desktop, Tablet.\n\nApps nativas proximamente!\n\nEmpieza: https://app.solis-os.com/signup`
+    app: (name) => `Solis OS funciona en todos los dispositivos, ${name}!\n\nMovil, Desktop, Tablet.\n\nApps nativas proximamente!\n\nEmpieza: https://app.solis-os.com/signup`,
+    language: (name) => `Solis OS soporta varios idiomas, ${name}!\n\nNuestra plataforma y chatbot funcionan en:\nIngles, Arabe, Frances, Espanol, Aleman, Italiano, Portugues, Griego, Chino, Japones, Coreano\n\nEl chatbot detecta tu idioma automaticamente y responde en el mismo idioma!\n\nQuieres saber algo mas?`
   },
 
   de: {
@@ -111,7 +115,8 @@ const translations = {
     support: (name) => `Ich bin hier, um zu helfen, ${name}!\n\nFrag mich hier alles zu Solis OS.\n\nFuer technischen Support schreib "mit jemandem sprechen".`,
     booking: (name) => `Solis OS macht die Terminverwaltung kinderleicht, ${name}!\n\nOnline-Buchungsseite - Deine Kunden buchen rund um die Uhr.\n\nSmarter Kalender - Alle Termine auf einen Blick.\n\nAutomatische Erinnerungen - Bis zu 80% weniger Ausfaelle.\n\nEinfaches Umbuchen - Kunden buchen selbst um.\n\nKostenlos starten: https://app.solis-os.com/signup`,
     security: (name) => `Sicherheit hat bei Solis OS hoechste Prioritaet, ${name}.\n\n- End-to-End-Verschluesselung\n- Sicheres Cloud-Hosting\n- Rollenbasierte Zugriffskontrolle\n- DSGVO-konform`,
-    app: (name) => `Solis OS funktioniert auf allen Geraeten, ${name}!\n\nMobil, Desktop, Tablet.\n\nNative Apps fuer Google Play und App Store kommen bald!\n\nJetzt starten: https://app.solis-os.com/signup`
+    app: (name) => `Solis OS funktioniert auf allen Geraeten, ${name}!\n\nMobil, Desktop, Tablet.\n\nNative Apps fuer Google Play und App Store kommen bald!\n\nJetzt starten: https://app.solis-os.com/signup`,
+    language: (name) => `Solis OS unterstuetzt mehrere Sprachen, ${name}!\n\nUnsere Plattform und der Chatbot funktionieren in:\nEnglisch, Arabisch, Franzoesisch, Spanisch, Deutsch, Italienisch, Portugiesisch, Griechisch, Chinesisch, Japanisch, Koreanisch\n\nDer Chatbot erkennt deine Sprache automatisch und antwortet in der gleichen Sprache!\n\nMoechtest du noch etwas wissen?`
   },
 
   it: {
@@ -134,7 +139,8 @@ const translations = {
     support: (name) => `Sono qui per aiutarti, ${name}!\n\nChiedimi qualsiasi cosa su Solis OS.\n\nPer supporto tecnico, scrivi "parlare con qualcuno".`,
     booking: (name) => `Solis OS rende la gestione prenotazioni semplicissima, ${name}!\n\nPagina di prenotazione 24/7\nCalendario intelligente\nPromemoria automatici (-80% assenze)\nRiprogrammazione facile\n\nInizia gratis: https://app.solis-os.com/signup`,
     security: (name) => `La sicurezza e una priorita per Solis OS, ${name}.\n\n- Crittografia end-to-end\n- Hosting cloud sicuro\n- Controllo accessi basato sui ruoli\n- Conforme al GDPR`,
-    app: (name) => `Solis OS funziona su tutti i dispositivi, ${name}!\n\nMobile, Desktop, Tablet.\n\nApp native per Google Play e App Store in arrivo!\n\nInizia: https://app.solis-os.com/signup`
+    app: (name) => `Solis OS funziona su tutti i dispositivi, ${name}!\n\nMobile, Desktop, Tablet.\n\nApp native per Google Play e App Store in arrivo!\n\nInizia: https://app.solis-os.com/signup`,
+    language: (name) => `Solis OS supporta piu lingue, ${name}!\n\nLa nostra piattaforma e chatbot funzionano in:\nInglese, Arabo, Francese, Spagnolo, Tedesco, Italiano, Portoghese, Greco, Cinese, Giapponese, Coreano\n\nIl chatbot rileva automaticamente la tua lingua e risponde nella stessa!\n\nVuoi sapere altro?`
   },
 
   pt: {
@@ -157,7 +163,8 @@ const translations = {
     support: (name) => `Estou aqui para ajudar, ${name}!\n\nPergunte qualquer coisa sobre o Solis OS.\n\nPara suporte tecnico, digite "falar com alguem".`,
     booking: (name) => `O Solis OS simplifica o gerenciamento de agendamentos, ${name}!\n\nPagina de agendamento 24/7\nCalendario inteligente\nLembretes automaticos (-80% ausencias)\nReagendamento facil\n\nComece gratis: https://app.solis-os.com/signup`,
     security: (name) => `Seguranca e prioridade no Solis OS, ${name}.\n\n- Criptografia de ponta a ponta\n- Hospedagem em nuvem segura\n- Controle de acesso por funcao\n- Em conformidade com a LGPD/GDPR`,
-    app: (name) => `O Solis OS funciona em todos os dispositivos, ${name}!\n\nCelular, Desktop, Tablet.\n\nApps nativos para Google Play e App Store em breve!\n\nComece: https://app.solis-os.com/signup`
+    app: (name) => `O Solis OS funciona em todos os dispositivos, ${name}!\n\nCelular, Desktop, Tablet.\n\nApps nativos para Google Play e App Store em breve!\n\nComece: https://app.solis-os.com/signup`,
+    language: (name) => `O Solis OS suporta varios idiomas, ${name}!\n\nNossa plataforma e chatbot funcionam em:\nIngles, Arabe, Frances, Espanhol, Alemao, Italiano, Portugues, Grego, Chines, Japones, Coreano\n\nO chatbot detecta seu idioma automaticamente e responde no mesmo idioma!\n\nQuer saber mais alguma coisa?`
   },
 
   el: {
@@ -180,7 +187,8 @@ const translations = {
     support: (name) => `Ειμαι εδω για να βοηθησω, ${name}!\n\nΡωτησε με οτιδηποτε για το Solis OS.\n\nΓια τεχνικη υποστηριξη, γραψε "μιληστε με καποιον".`,
     booking: (name) => `Το Solis OS κανει τη διαχειριση ραντεβου παιχνιδακι, ${name}!\n\nΣελιδα κρατησεων 24/7\nΕξυπνο ημερολογιο\nΑυτοματες υπενθυμισεις (-80% ακυρωσεις)\nΕυκολη αλλαγη ραντεβου\n\nΞεκινα δωρεαν: https://app.solis-os.com/signup`,
     security: (name) => `Η ασφαλεια ειναι προτεραιοτητα στο Solis OS, ${name}.\n\n- Κρυπτογραφηση απο ακρη σε ακρη\n- Ασφαλες cloud hosting\n- Ελεγχος προσβασης βασει ρολων\n- Συμμορφωση με GDPR`,
-    app: (name) => `Το Solis OS λειτουργει σε ολες τις συσκευες, ${name}!\n\nΚινητο, Desktop, Tablet.\n\nNative apps για Google Play και App Store ερχονται συντομα!\n\nΞεκινα: https://app.solis-os.com/signup`
+    app: (name) => `Το Solis OS λειτουργει σε ολες τις συσκευες, ${name}!\n\nΚινητο, Desktop, Tablet.\n\nNative apps για Google Play και App Store ερχονται συντομα!\n\nΞεκινα: https://app.solis-os.com/signup`,
+    language: (name) => `Το Solis OS υποστηριζει πολλες γλωσσες, ${name}!\n\nΗ πλατφορμα και το chatbot λειτουργουν σε:\nΑγγλικα, Αραβικα, Γαλλικα, Ισπανικα, Γερμανικα, Ιταλικα, Πορτογαλικα, Ελληνικα, Κινεζικα, Ιαπωνικα, Κορεατικα\n\nΤο chatbot αναγνωριζει αυτοματα τη γλωσσα σας!\n\nΘελετε να μαθετε κατι αλλο;`
   },
 
   zh: {
@@ -203,7 +211,8 @@ const translations = {
     support: (name) => `我来帮你，${name}！\n\n关于 Solis OS 的任何问题都可以问我。\n\n需要技术支持，请输入"转接人工"。`,
     booking: (name) => `Solis OS 让预约管理变得轻松，${name}！\n\n全天候在线预约页面\n智能日历\n自动提醒（减少80%爽约）\n轻松改约\n\n免费开始：https://app.solis-os.com/signup`,
     security: (name) => `安全是 Solis OS 的首要任务，${name}。\n\n- 端到端加密\n- 安全云托管\n- 基于角色的访问控制\n- 符合GDPR规范`,
-    app: (name) => `Solis OS 适用于所有设备，${name}！\n\n手机、电脑、平板都能用。\n\nGoogle Play 和 App Store 原生应用即将推出！\n\n立即开始：https://app.solis-os.com/signup`
+    app: (name) => `Solis OS 适用于所有设备，${name}！\n\n手机、电脑、平板都能用。\n\nGoogle Play 和 App Store 原生应用即将推出！\n\n立即开始：https://app.solis-os.com/signup`,
+    language: (name) => `Solis OS 支持多种语言，${name}！\n\n我们的平台和聊天机器人支持：\n英语、阿拉伯语、法语、西班牙语、德语、意大利语、葡萄牙语、希腊语、中文、日语、韩语\n\n聊天机器人会自动检测您的语言并用相同语言回复！\n\n还有什么想了解的吗？`
   },
 
   ja: {
@@ -226,7 +235,8 @@ const translations = {
     support: (name) => `お手伝いします、${name}さん！\n\nSolis OSについて何でもお聞きください。\n\n技術サポートが必要な場合は「担当者に繋いで」と入力してください。`,
     booking: (name) => `Solis OSで予約管理が楽になります、${name}さん！\n\n24時間オンライン予約ページ\nスマートカレンダー\n自動リマインダー（キャンセル80%減）\n簡単リスケジュール\n\n無料で始める：https://app.solis-os.com/signup`,
     security: (name) => `セキュリティはSolis OSの最優先事項です、${name}さん。\n\n- エンドツーエンド暗号化\n- 安全なクラウドホスティング\n- ロールベースのアクセス制御\n- GDPR準拠`,
-    app: (name) => `Solis OSはすべてのデバイスで使えます、${name}さん！\n\nスマホ、PC、タブレット対応。\n\nGoogle PlayとApp Storeのネイティブアプリも近日公開！\n\n今すぐ始める：https://app.solis-os.com/signup`
+    app: (name) => `Solis OSはすべてのデバイスで使えます、${name}さん！\n\nスマホ、PC、タブレット対応。\n\nGoogle PlayとApp Storeのネイティブアプリも近日公開！\n\n今すぐ始める：https://app.solis-os.com/signup`,
+    language: (name) => `Solis OSは多言語対応です、${name}さん！\n\nプラットフォームとチャットボットは以下の言語に対応：\n英語、アラビア語、フランス語、スペイン語、ドイツ語、イタリア語、ポルトガル語、ギリシャ語、中国語、日本語、韓国語\n\nチャットボットは自動的にあなたの言語を検出し、同じ言語で返信します！\n\n他に何か知りたいことはありますか？`
   },
 
   ko: {
@@ -249,7 +259,8 @@ const translations = {
     support: (name) => `도와드리겠습니다, ${name}님!\n\nSolis OS에 대해 무엇이든 물어보세요.\n\n기술 지원이 필요하시면 "상담사 연결"이라고 입력해 주세요.`,
     booking: (name) => `Solis OS로 예약 관리가 간편해집니다, ${name}님!\n\n24시간 온라인 예약 페이지\n스마트 캘린더\n자동 리마인더 (노쇼 80% 감소)\n간편 일정 변경\n\n무료 시작: https://app.solis-os.com/signup`,
     security: (name) => `보안은 Solis OS의 최우선 과제입니다, ${name}님.\n\n- 종단간 암호화\n- 안전한 클라우드 호스팅\n- 역할 기반 접근 제어\n- GDPR 준수`,
-    app: (name) => `Solis OS는 모든 기기에서 사용 가능합니다, ${name}님!\n\n모바일, 데스크톱, 태블릿 지원.\n\nGoogle Play와 App Store 네이티브 앱 곧 출시!\n\n지금 시작: https://app.solis-os.com/signup`
+    app: (name) => `Solis OS는 모든 기기에서 사용 가능합니다, ${name}님!\n\n모바일, 데스크톱, 태블릿 지원.\n\nGoogle Play와 App Store 네이티브 앱 곧 출시!\n\n지금 시작: https://app.solis-os.com/signup`,
+    language: (name) => `Solis OS는 다국어를 지원합니다, ${name}님!\n\n플랫폼과 챗봇이 지원하는 언어:\n영어, 아랍어, 프랑스어, 스페인어, 독일어, 이탈리아어, 포르투갈어, 그리스어, 중국어, 일본어, 한국어\n\n챗봇이 자동으로 언어를 감지하고 같은 언어로 응답합니다!\n\n더 알고 싶은 것이 있으신가요?`
   }
 };
 

@@ -221,6 +221,19 @@ function matchTopicKey(input, lang) {
       ja: ['セキュリティ', '安全', 'プライバシー', '暗号化', 'GDPR'],
       ko: ['보안', '안전', '개인정보', '암호화', 'GDPR']
     },
+    language: {
+      en: ['language', 'languages', 'arabic', 'french', 'spanish', 'german', 'italian', 'portuguese', 'chinese', 'japanese', 'korean', 'greek', 'multilingual', 'translate'],
+      ar: ['لغة', 'لغات', 'عربي', 'فرنسي', 'اسباني', 'متعدد اللغات', 'ترجمة'],
+      fr: ['langue', 'langues', 'multilingue', 'traduire', 'traduction'],
+      es: ['idioma', 'idiomas', 'multilingue', 'traducir', 'traduccion'],
+      de: ['sprache', 'sprachen', 'mehrsprachig', 'uebersetzen'],
+      it: ['lingua', 'lingue', 'multilingue', 'tradurre', 'traduzione'],
+      pt: ['idioma', 'idiomas', 'multilingue', 'traduzir', 'traducao'],
+      el: ['γλωσσα', 'γλωσσες', 'πολυγλωσσο', 'μεταφραση'],
+      zh: ['语言', '多语言', '翻译', '中文'],
+      ja: ['言語', '多言語', '翻訳', '日本語'],
+      ko: ['언어', '다국어', '번역', '한국어']
+    },
     thanks: {
       en: ['thank', 'thanks', 'appreciate', 'cheers', 'great', 'perfect', 'awesome', 'amazing'],
       ar: ['شكرا', 'شكرًا', 'ممتاز', 'رائع', 'مثالي'],

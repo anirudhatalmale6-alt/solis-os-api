@@ -13,6 +13,14 @@ function saveWhatsappData(data) {
   fs.writeFileSync(WHATSAPP_DATA_FILE, JSON.stringify(data, null, 2));
 }
 
+const processedMessages = new Set();
+function isDuplicate(msgId) {
+  if (!msgId || processedMessages.has(msgId)) return true;
+  processedMessages.add(msgId);
+  setTimeout(() => processedMessages.delete(msgId), 60000);
+  return false;
+}
+
 const LEADS_FILE = path.join(__dirname, 'leads_log.json');
 function loadLeads() {
   try { return JSON.parse(fs.readFileSync(LEADS_FILE, 'utf8')); } catch { return []; }
@@ -79,6 +87,7 @@ app.post('/webhook', async (req, res) => {
         if (!value || !value.messages) continue;
 
         for (const message of value.messages) {
+          if (isDuplicate(message.id)) continue;
           if (message.type !== 'text') {
             await sendWhatsAppMessage(
               message.from,
