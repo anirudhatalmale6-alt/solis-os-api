@@ -34,13 +34,18 @@ function handleIncomingMessage(text, senderName, phone) {
     return t.welcomeGeneric(firstName);
   }
 
-  if (['1','2','3','4','5'].includes(input)) {
-    const keys = ['features','pricing','industries','getStarted','demo'];
-    return t[keys[parseInt(input)-1]](firstName);
+  const numKeys = ['features','pricing','industries','getStarted','demo','booking','ai','language','support','human'];
+  const num = parseInt(input);
+  if (num >= 1 && num <= numKeys.length && input === String(num)) {
+    const reply = t[numKeys[num-1]](firstName);
+    return reply + '\n\n' + t.menu();
   }
 
   const topicKey = matchTopicKey(input, session.lang);
-  if (topicKey && t[topicKey]) return t[topicKey](firstName);
+  if (topicKey && t[topicKey]) {
+    const reply = t[topicKey](firstName);
+    return reply + '\n\n' + t.menu();
+  }
 
   return t.fallback(firstName);
 }
