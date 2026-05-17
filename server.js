@@ -196,8 +196,7 @@ app.post('/api/public-booking', async (req, res) => {
     const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
     if (!SERVICE_ROLE_KEY) return res.status(500).json({ error: 'Server not configured' });
 
-    const booking = { business_id, service_id, customer_name, customer_phone, date, time, duration: duration || 30, notes: notes || '', status: 'confirmed' };
-    if (service_name) booking.service_name = service_name;
+    const booking = { business_id, service_id, customer_name, customer_phone, date, time, duration: duration || 30, notes: notes || (service_name ? `${service_name}` : ''), status: 'confirmed' };
     if (customer_email) booking.customer_email = customer_email;
 
     const resp = await fetch(`${SUPABASE_URL}/rest/v1/bookings`, {
