@@ -1,4 +1,5 @@
 const { detectLanguage, getTranslation } = require('./translations');
+const { getAIResponse } = require('./ai');
 
 const conversations = new Map();
 const SESSION_TIMEOUT = 30 * 60 * 1000;
@@ -10,12 +11,12 @@ function getSession(phone) {
     session.messageCount++;
     return session;
   }
-  const newSession = { lastActive: Date.now(), messageCount: 1, greeted: false, lang: 'en' };
+  const newSession = { lastActive: Date.now(), messageCount: 1, greeted: false, lang: 'en', handedOff: false };
   conversations.set(phone, newSession);
   return newSession;
 }
 
-function handleIncomingMessage(text, senderName, phone) {
+async function handleIncomingMessage(text, senderName, phone) {
   const session = getSession(phone);
   const input = text.toLowerCase().trim();
   const firstName = senderName.split(' ')[0];
@@ -24,28 +25,47 @@ function handleIncomingMessage(text, senderName, phone) {
   if (detectedLang !== 'en') session.lang = detectedLang;
   const t = getTranslation(session.lang);
 
+  if (session.handedOff) {
+    return null;
+  }
+
   if (!session.greeted) {
     session.greeted = true;
     if (isGreeting(input, session.lang)) {
       return t.welcome(firstName);
     }
     const topicKey = matchTopicKey(input, session.lang);
+    if (topicKey === 'human') {
+      session.handedOff = true;
+      return t.human(firstName);
+    }
     if (topicKey && t[topicKey]) return t.welcomeWithAnswer(firstName, t[topicKey](firstName));
     return t.welcomeGeneric(firstName);
   }
 
-  const numKeys = ['features','pricing','industries','getStarted','demo','booking','ai','language','support','human'];
+  const numKeys = ['features','pricing','industries','getStarted','demo','booking','ai','support','human'];
   const num = parseInt(input);
   if (num >= 1 && num <= numKeys.length && input === String(num)) {
+    if (numKeys[num-1] === 'human') {
+      session.handedOff = true;
+      return t.human(firstName);
+    }
     const reply = t[numKeys[num-1]](firstName);
     return reply + '\n\n' + t.menu();
   }
 
   const topicKey = matchTopicKey(input, session.lang);
+  if (topicKey === 'human') {
+    session.handedOff = true;
+    return t.human(firstName);
+  }
   if (topicKey && t[topicKey]) {
     const reply = t[topicKey](firstName);
     return reply + '\n\n' + t.menu();
   }
+
+  const aiReply = await getAIResponse(text, phone, firstName, session.lang);
+  if (aiReply) return aiReply;
 
   return t.fallback(firstName);
 }
@@ -290,4 +310,14 @@ function matchTopicKey(input, lang) {
   return null;
 }
 
-module.exports = { handleIncomingMessage };
+function isHandedOff(phone) {
+  const session = conversations.get(phone);
+  return session ? session.handedOff : false;
+}
+
+function resumeBot(phone) {
+  const session = conversations.get(phone);
+  if (session) session.handedOff = false;
+}
+
+module.exports = { handleIncomingMessage, isHandedOff, resumeBot };
