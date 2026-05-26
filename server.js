@@ -419,10 +419,14 @@ if (!fs.existsSync(POS_DATA_DIR)) fs.mkdirSync(POS_DATA_DIR, { recursive: true }
 // POST /api/pos/sync - POS pushes sync data
 app.post('/api/pos/sync', (req, res) => {
   try {
-    const { syncCode, businessName, data } = req.body;
+    const { syncCode, businessName, data, products, promotions, staff, customers } = req.body;
     if (!syncCode || !data) return res.status(400).json({ error: 'syncCode and data required' });
     const filePath = path.join(POS_DATA_DIR, `${syncCode.toUpperCase()}.json`);
     const payload = { businessName: businessName || 'My Business', data, syncedAt: new Date().toISOString() };
+    if (products !== undefined) payload.products = products;
+    if (promotions !== undefined) payload.promotions = promotions;
+    if (staff !== undefined) payload.staff = staff;
+    if (customers !== undefined) payload.customers = customers;
     fs.writeFileSync(filePath, JSON.stringify(payload));
     res.json({ success: true, syncedAt: payload.syncedAt });
   } catch (err) {
@@ -438,10 +442,71 @@ app.get('/api/pos/dashboard/:syncCode', (req, res) => {
     const filePath = path.join(POS_DATA_DIR, `${code}.json`);
     if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'No data found for this sync code' });
     const payload = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    res.json(payload);
+    // Ensure all fields are present in response (backward compat)
+    const response = {
+      businessName: payload.businessName,
+      data: payload.data,
+      syncedAt: payload.syncedAt,
+      products: payload.products || [],
+      promotions: payload.promotions || [],
+      staff: payload.staff || [],
+      customers: payload.customers || [],
+    };
+    res.json(response);
   } catch (err) {
     console.error('Dashboard data error:', err);
     res.status(500).json({ error: 'Failed to load data' });
+  }
+});
+
+// POST /api/pos/remote/:syncCode - Dashboard pushes a remote command to POS
+app.post('/api/pos/remote/:syncCode', (req, res) => {
+  try {
+    const code = req.params.syncCode.toUpperCase();
+    const { type, data } = req.body;
+    if (!type) return res.status(400).json({ error: 'type is required' });
+    const filePath = path.join(POS_DATA_DIR, `${code}_commands.json`);
+    let commands = [];
+    try { commands = JSON.parse(fs.readFileSync(filePath, 'utf8')); } catch { commands = []; }
+    const command = {
+      id: `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`,
+      type,
+      data: data || {},
+      createdAt: new Date().toISOString(),
+    };
+    commands.push(command);
+    fs.writeFileSync(filePath, JSON.stringify(commands));
+    res.json({ success: true, command });
+  } catch (err) {
+    console.error('Remote command push error:', err);
+    res.status(500).json({ error: 'Failed to push command' });
+  }
+});
+
+// GET /api/pos/remote/:syncCode - POS fetches pending remote commands
+app.get('/api/pos/remote/:syncCode', (req, res) => {
+  try {
+    const code = req.params.syncCode.toUpperCase();
+    const filePath = path.join(POS_DATA_DIR, `${code}_commands.json`);
+    let commands = [];
+    try { commands = JSON.parse(fs.readFileSync(filePath, 'utf8')); } catch { commands = []; }
+    res.json({ commands });
+  } catch (err) {
+    console.error('Remote command fetch error:', err);
+    res.status(500).json({ error: 'Failed to fetch commands' });
+  }
+});
+
+// DELETE /api/pos/remote/:syncCode - POS clears processed commands
+app.delete('/api/pos/remote/:syncCode', (req, res) => {
+  try {
+    const code = req.params.syncCode.toUpperCase();
+    const filePath = path.join(POS_DATA_DIR, `${code}_commands.json`);
+    fs.writeFileSync(filePath, JSON.stringify([]));
+    res.json({ success: true });
+  } catch (err) {
+    console.error('Remote command clear error:', err);
+    res.status(500).json({ error: 'Failed to clear commands' });
   }
 });
 
