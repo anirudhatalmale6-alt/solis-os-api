@@ -412,6 +412,39 @@ app.post('/chat', async (req, res) => {
   }
 });
 
+// POS Cloud Sync Storage
+const POS_DATA_DIR = path.join(__dirname, 'pos_sync_data');
+if (!fs.existsSync(POS_DATA_DIR)) fs.mkdirSync(POS_DATA_DIR, { recursive: true });
+
+// POST /api/pos/sync - POS pushes sync data
+app.post('/api/pos/sync', (req, res) => {
+  try {
+    const { syncCode, businessName, data } = req.body;
+    if (!syncCode || !data) return res.status(400).json({ error: 'syncCode and data required' });
+    const filePath = path.join(POS_DATA_DIR, `${syncCode.toUpperCase()}.json`);
+    const payload = { businessName: businessName || 'My Business', data, syncedAt: new Date().toISOString() };
+    fs.writeFileSync(filePath, JSON.stringify(payload));
+    res.json({ success: true, syncedAt: payload.syncedAt });
+  } catch (err) {
+    console.error('POS sync error:', err);
+    res.status(500).json({ error: 'Sync failed' });
+  }
+});
+
+// GET /api/pos/dashboard/:syncCode - Dashboard reads data
+app.get('/api/pos/dashboard/:syncCode', (req, res) => {
+  try {
+    const code = req.params.syncCode.toUpperCase();
+    const filePath = path.join(POS_DATA_DIR, `${code}.json`);
+    if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'No data found for this sync code' });
+    const payload = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    res.json(payload);
+  } catch (err) {
+    console.error('Dashboard data error:', err);
+    res.status(500).json({ error: 'Failed to load data' });
+  }
+});
+
 if (require.main === module) {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
