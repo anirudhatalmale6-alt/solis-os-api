@@ -528,7 +528,7 @@ app.post('/api/pos/checkout', async (req, res) => {
         line_items: [{
           name: 'Solis OS POS — Annual Subscription',
           quantity: '1',
-          base_price_money: { amount: 24900, currency: 'AUD' },
+          base_price_money: { amount: 23900, currency: 'AUD' },
         }],
       },
       checkout_options: {
