@@ -533,7 +533,6 @@ app.post('/api/pos/checkout', async (req, res) => {
       },
       checkout_options: {
         redirect_url: `https://solis-os.com/purchase-success.html?email=${encodeURIComponent(email)}`,
-        accepted_payment_methods: { apple_pay: true, google_pay: true },
       },
       pre_populated_data: { buyer_email: email },
     };
@@ -550,8 +549,8 @@ app.post('/api/pos/checkout', async (req, res) => {
 
     const data = await resp.json();
     if (!resp.ok) {
-      console.error('Square checkout error:', data);
-      return res.status(500).json({ error: 'Payment link creation failed' });
+      console.error('Square checkout error:', JSON.stringify(data));
+      return res.status(500).json({ error: 'Payment link creation failed', details: data.errors });
     }
 
     const link = data.payment_link || {};
