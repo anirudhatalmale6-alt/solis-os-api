@@ -427,6 +427,8 @@ app.post('/api/pos/sync', (req, res) => {
     if (promotions !== undefined) payload.promotions = promotions;
     if (staff !== undefined) payload.staff = staff;
     if (customers !== undefined) payload.customers = customers;
+    if (req.body.sales !== undefined) payload.sales = req.body.sales;
+    if (req.body.settings !== undefined) payload.settings = req.body.settings;
     fs.writeFileSync(filePath, JSON.stringify(payload));
     res.json({ success: true, syncedAt: payload.syncedAt });
   } catch (err) {
@@ -456,6 +458,28 @@ app.get('/api/pos/dashboard/:syncCode', (req, res) => {
   } catch (err) {
     console.error('Dashboard data error:', err);
     res.status(500).json({ error: 'Failed to load data' });
+  }
+});
+
+// GET /api/pos/pull/:syncCode - POS pulls data from cloud for multi-device sync
+app.get('/api/pos/pull/:syncCode', (req, res) => {
+  try {
+    const code = req.params.syncCode.toUpperCase();
+    const filePath = path.join(POS_DATA_DIR, `${code}.json`);
+    if (!fs.existsSync(filePath)) return res.status(404).json({ error: 'No data found' });
+    const payload = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    res.json({
+      products: payload.products || [],
+      sales: payload.sales || [],
+      customers: payload.customers || [],
+      staff: payload.staff || [],
+      promotions: payload.promotions || [],
+      settings: payload.settings || {},
+      syncedAt: payload.syncedAt,
+    });
+  } catch (err) {
+    console.error('POS pull error:', err);
+    res.status(500).json({ error: 'Failed to pull data' });
   }
 });
 
