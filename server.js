@@ -416,6 +416,44 @@ app.post('/chat', async (req, res) => {
 const POS_DATA_DIR = path.join(__dirname, 'pos_sync_data');
 if (!fs.existsSync(POS_DATA_DIR)) fs.mkdirSync(POS_DATA_DIR, { recursive: true });
 
+const EMAIL_MAP_FILE = path.join(POS_DATA_DIR, '_email_map.json');
+function loadEmailMap() {
+  try { return JSON.parse(fs.readFileSync(EMAIL_MAP_FILE, 'utf8')); } catch { return {}; }
+}
+function saveEmailMap(map) {
+  fs.writeFileSync(EMAIL_MAP_FILE, JSON.stringify(map, null, 2));
+}
+
+// GET /api/pos/lookup-sync/:email - Look up sync code by email
+app.get('/api/pos/lookup-sync/:email', (req, res) => {
+  try {
+    const email = decodeURIComponent(req.params.email).toLowerCase().trim();
+    const map = loadEmailMap();
+    if (map[email]) {
+      return res.json({ syncCode: map[email] });
+    }
+    res.status(404).json({ error: 'No sync code found for this email' });
+  } catch (err) {
+    console.error('Lookup sync error:', err);
+    res.status(500).json({ error: 'Lookup failed' });
+  }
+});
+
+// POST /api/pos/register-sync - Register email-to-sync-code mapping
+app.post('/api/pos/register-sync', (req, res) => {
+  try {
+    const { email, syncCode } = req.body;
+    if (!email || !syncCode) return res.status(400).json({ error: 'email and syncCode required' });
+    const map = loadEmailMap();
+    map[email.toLowerCase().trim()] = syncCode.toUpperCase();
+    saveEmailMap(map);
+    res.json({ success: true });
+  } catch (err) {
+    console.error('Register sync error:', err);
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
 // POST /api/pos/sync - POS pushes sync data
 app.post('/api/pos/sync', (req, res) => {
   try {
@@ -430,6 +468,11 @@ app.post('/api/pos/sync', (req, res) => {
     if (req.body.sales !== undefined) payload.sales = req.body.sales;
     if (req.body.settings !== undefined) payload.settings = req.body.settings;
     fs.writeFileSync(filePath, JSON.stringify(payload));
+    if (req.body.email) {
+      const map = loadEmailMap();
+      map[req.body.email.toLowerCase().trim()] = syncCode.toUpperCase();
+      saveEmailMap(map);
+    }
     res.json({ success: true, syncedAt: payload.syncedAt });
   } catch (err) {
     console.error('POS sync error:', err);
